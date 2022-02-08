@@ -1,5 +1,5 @@
 # badbank
-banking application sample app for tutorial
+banking application sample for tutorial
 Badbank is a banking application that will allow users to create accounts and keep track of the accounts' status.
 Installation Guidelines:
    - To run this project locally, please download a zip-folder or clone the repository to your local machine.
