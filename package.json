@@ -1,0 +1,20 @@
+{
+  "name": "badbank",
+  "version": "1.0.0",
+  "description": "Badbank is a banking application that will allow users to create accounts and keep track of the accounts' status.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "badbank"
+  },
+  "author": "Blaise I",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1"
+  }
+}
