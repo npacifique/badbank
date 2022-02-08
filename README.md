@@ -3,8 +3,7 @@ banking application sample for tutorial
 
 badbank is a banking application that will allow users to create accounts and keep track of the accounts' status.
 Installation Guidelines:
-   - To run this project locally, please download a zip-folder or clone the repository to your local machine.
-   - Initialize the node app npm init -y for default settings
+   - To download and run this project locally, please switch to the master branch and download a zip-folder or clone the repository to your local machine.
    - open the project in the editor and, install dependencies. All dependencies are listed inside the package.JSON file (express, mongodb and cors)
    - to install dependencies run the following comands in your terminal at the root directory:- npm i express
                                                                                               - npm i mongodb
