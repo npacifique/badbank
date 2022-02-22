@@ -21,7 +21,7 @@ function create(name, email, password){
 }
 //Add Login
 //Deposit
-//Add Withraw
+//Add Withdraw
 //Add Balance
 
 // all users
