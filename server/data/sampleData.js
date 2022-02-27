@@ -18,10 +18,15 @@ const users = {
         },
         "widthrows" : 
         {
+            "02/26/2022" : [
+                {"time" : "09:05 AM", "amount" : 15},
+                {"time" : "08:06 AM", "amount" : 50}
+            ],
             "02/27/2022" : [
                 {"time" : "10:05 AM", "amount" : 5},
                 {"time" : "10:06 AM", "amount" : 5}
-            ]  
+            ]    
+
         }
     }, 
     "ann.beth" : {
