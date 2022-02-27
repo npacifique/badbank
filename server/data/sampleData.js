@@ -1,6 +1,6 @@
 const users = [
     {
-        "id":"xxx",
+        "id":"01",
         "firstName":"Joe",
         "LastName":"Doe",
         "username" : "joe.doe",
@@ -24,13 +24,13 @@ const users = [
         ]
     }, 
     {
-        "id":"xxx",
+        "id":"02",
         "firstName":"Ann",
         "LastName":"Beth",
         "username" : "ann.beth",
         "emailAddress" : "ann.beth@gmail.com", 
         "password" : "pasNow", 
-        "account" : 123, 
+        "account" : 124, 
         "isAdmin":false,
         "deposits" : 
         [
