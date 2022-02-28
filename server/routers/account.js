@@ -6,8 +6,11 @@ const auth = require('../shared/auth')
 
 const users = require('../data/sampleData')
 
-const {getBalance} = require('../shared/logics/balances')
+const {getBalance, isAbleToWithdrow} = require('../shared/logics/balances')
 
+const today = moment().format("MM/DD/YYYY")
+
+let data = users['joe.doe'].deposits[today.toString()]
 
 //const calc = new calculator()
 
@@ -48,115 +51,49 @@ router.get('/balance/:username', (req, res)=>{
 
 router.post('/deposit/:username', (req, res)=>{
 
-    // console.log(moment().format("MM/DD/YYYY"))
-
-    // console.log(moment().format("h:mm a"))
-    const today = moment().format("MM/DD/YYYY")
-
-    let newBal
-    
-    let newDay = { [today.toString()]:[]}
-
-    const user = req.params["username"]
-
-    const dep = users[user].deposits
-
-    const keys = Object.keys(dep)
-
-    let data = [] // users[user].deposits[today.toString()]
-
-    
-    // var data = keys.map((k)=> {
-
-    //     return  k.toString() == today.toString() && users[user].deposits[today.toString()
-      
-    // })
-
-    //users[user].deposits[today.toString()].concat({"time":  moment().format("h:mm a"),"amount": req.body.amount})
-
+    //use database data instead of sample data
     if(data == undefined){
-        
-       data.push(req.body.amount)
-
-        
-    }else if(data !== undefined){
-
-        data.push(req.body.amount)
-
-        
+        data = []
+       users['joe.doe'].deposits[today.toString()] =  [{"time":  moment().format("h:mm a"),"amount": req.body.amount}]
+       
+    }else{
+        users['joe.doe'].deposits[today.toString()].push({"time":  moment().format("h:mm a"),"amount": req.body.amount})
     }
     
-    res.send(data)
-    
+    res.send(users['joe.doe'].deposits)
 
-    // if(data == undefined){
-        
-    // }else{
-       
-    // }
-
-
-    //console.log(users[user].deposits[today.toString()])
-
-
-   // keys.filter(k => {
-
-        // if(k.toString() == today.toString()) 
-        // {
-        //     newBal = users[user].deposits[k].push({"time":  moment().format("h:mm a"),"amount": req.body.amount})
-
-        //     return
-        // }
-        // else
-        // {
-
-        //     newDay[today.toString()].push({"time":  moment().format("h:mm a"),"amount": req.body.amount})
-
-        //     newBal = {...users[user].deposits, ...newDay}
-
-        //     return
-            
-        // }
-       
-
-
-    // })
-
-        // console.log(newBal)
-
-        // res.send(newBal)
-
-       
     }
 )
 
 
+router.post('/withdrow/:username', (req, res)=>{
 
+    //use database data instead of sample data
 
+    let checks = isAbleToWithdrow('joe.doe', req.body.amount)
 
+    if(checks){
 
+        if(users['joe.doe'].widthrows[today.toString()] == undefined){
+            users['joe.doe'].widthrows[today.toString()] = []
+        users['joe.doe'].widthrows[today.toString()] =  [{"time":  moment().format("h:mm a"),"amount": req.body.amount}]
+        
+        }else{
+            users['joe.doe'].widthrows[today.toString()].push({"time":  moment().format("h:mm a"),"amount": req.body.amount})
+        }
+    }
 
-    //console.log(moment().format("MM/DD/YYYY"))
+    //res.send(users['joe.doe'].widthrows)
+    const bal = getBalance('joe.doe')
 
-   // console.log(keys)
+    if(checks){
+        res.send({username : 'joe.doe', "balance":bal})
+    }else{
+        res.send({"error" : 'you have no money to cover your withdrow'})
+    }
 
-
-
-    
-    //const bal = getBalance(user)
-
-    //res.send({username : user, "balance":bal})
-    
-// })
-
-
-
-
-
-
-
-
-
+    }
+)
 
 
 
