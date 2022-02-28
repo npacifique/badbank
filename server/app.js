@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 
 // routers
 const userRouter = require('./routers/user')
+const accountRouter = require('./routers/account')
 
 // app variables
 const app =  express()
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/api/user', userRouter)
+app.use('/api/account', accountRouter)
 
 
 app.listen(port, ()=>{
